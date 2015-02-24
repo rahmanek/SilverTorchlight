@@ -1,0 +1,21 @@
+doctype html
+html(lang="en" ng-app="torch")
+	head
+		meta(charset='utf-8')
+		link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="css/style.css")
+	body
+		include ./header.jade
+
+		div(ng-view style="height:100%;")
+		include ./payer.jade
+		include ./provider.jade
+		include ./region.jade
+
+		script(src="data/dash.js")
+		script(src="data/settings.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular-route.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js")

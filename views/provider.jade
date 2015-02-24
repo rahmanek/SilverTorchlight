@@ -1,0 +1,20 @@
+script(type="text/ng-template" id="provider.html")
+	div(style="margin:auto; width:960px;")
+		div(style="width:300px; height: 50px; margin:auto; white-space: nowrap;")
+			input(type="text" placeholder="VPN" id="vpnSearch" style="float:left; width: 200px;")
+			a(href="javascript:;" class="button tiny" id="vpnButton" style="float:right;") Search
+
+		div(id="profileContent" style="width:500px; margin:20px auto 0 auto; position:relative;")
+			div(style="font-size:16px; color:#0D6F8B; margin-bottom:10px;")
+				span(style="text-transform:capitalize;") {{api.name}}
+			div(style="color:#555555; font-size: 10px; margin-bottom: 10px;")
+				div(style="text-transform:capitalize; margin-bottom:3px;") {{api.street}}
+				div(style="text-transform:capitalize") {{api.city}}, MA {{api.zip}}
+				div(style="margin-top:10px") VPN - {{api.vpn}} || FacNo - {{api.facNo}}
+			div(ng-repeat="stat in finance" style="position: relative;border: 1px solid white; background-color:#eeeeee; padding: 5px 0 5px 15px;")
+				span(style="font-size:12px;") {{stat.name}}
+				span(style="font-size:12px; position:absolute; left:300px;") {{stat.value}}
+			div(style="width: 150px; margin: 10px auto;")
+				canvas(id="myChart" style="width:100px; height:100px; margin: 10px auto;")
+			div(ng-repeat="uType in util" class="chartColor" style="background-color:{{uType.color}}; padding: 0 0 0 15px; width:35%;")
+				div(style="font-size:8px; color:black;line-height:25px; height:25px; vertical-align: middle;") {{uType.name}}
