@@ -1,4 +1,5 @@
 document.settings = 
+	patriotHost: "http://localhost:3000/"
 	primary1:
 		name: "PMS 302"
 		hex: "#004f6d"
