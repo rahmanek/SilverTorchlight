@@ -11,24 +11,13 @@ script(type="text/ng-template" id="region.html")
 			li(ng-click = "regionTab = 'regionOther'")
 				a(href='javascript:;') Other
 
-	div(ng-if="regionTab == 'regionTme'")
-		p stuff 1
-	div(ng-if="regionTab == 'regionPayerMix'")
+	div(ng-show="regionTab == 'regionTme'" style="position:relative;")
+		div(id="tmeDonut" style="width 460px;")
+		div(id="tmeDonutInfo" style="width:500px; height: 200px;position:absolute; right:0; top:0;border-left: 3px solid #000000; padding-left: 15px;")
+			span(id="tmeDonutInfoCat" style="font-size:24px;") {{region.donut.category}}
+			p(style="margin-top:20px;") Medical Expense PMM: ${{region.donut.value}}
+			p(style="margin-top:20px;") Percent of Total PMM: {{region.donut.percent}} %
+	div(ng-show="regionTab == 'regionPayerMix'")
 		p stuff 2
-	div(ng-if="regionTab == 'regionOther'")
+	div(ng-show="regionTab == 'regionOther'")
 		p stuff 3
-
-
-	//- div(style="font-size:16px; color:#0D6F8B; margin-bottom:10px;")
-	//- 	span(style="text-transform:capitalize;") {{region.descriptions}}
-	//- div(style="color:#555555; font-size: 10px; margin-bottom: 10px;")
-	//- 	div(style="text-transform:capitalize; margin-bottom:3px;") {{api.street}}
-	//- 	div(style="text-transform:capitalize") {{api.city}}, MA {{api.zip}}
-	//- 	div(style="margin-top:10px") VPN - {{api.vpn}} || FacNo - {{api.facNo}}
-	//- div(ng-repeat="stat in finance" style="position: relative;border: 1px solid white; background-color:#eeeeee; padding: 5px 0 5px 15px;")
-	//- 	span(style="font-size:12px;") {{stat.name}}
-	//- 	span(style="font-size:12px; position:absolute; left:300px;") {{stat.value}}
-	//- div(style="width: 150px; margin: 10px auto;")
-	//- 	canvas(id="myChart" style="width:100px; height:100px; margin: 10px auto;")
-	//- div(ng-repeat="uType in util" class="chartColor" style="background-color:{{uType.color}}; padding: 0 0 0 15px; width:35%;")
-	//- 	div(style="font-size:8px; color:black;line-height:25px; height:25px; vertical-align: middle;") {{uType.name}}
