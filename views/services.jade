@@ -1,0 +1,21 @@
+script(type="text/ng-template" id="services.html")
+
+	.row
+		.col-md-1
+		.col-md-10
+			ol.breadcrumb
+				li
+					a(href="#") Home
+				li
+					a(href="#/tools") Tools
+				li.active Service Profiles
+		.col-md-1
+
+	.row 
+		.col-md-6
+			div(id="regionDescription" style = "margin-bottom:30px;")
+				h2 Service Profiles
+		.col-md-6
+			.regionSearch
+				input.form-control(id="serviceSearchBox" type='text' placeholder='Service Search')
+				button.btn.btn-default(id="serviceSearchButton" type='submit') Search

@@ -1,0 +1,24 @@
+script(type="text/ng-template" id="home.html")
+	#carousel-example-generic.carousel.slide(data-ride='carousel', style='width:960px; margin:auto;')
+		ol.carousel-indicators
+				li.active(data-target='#carousel-example-generic', data-slide-to='0')
+				li(data-target='#carousel-example-generic', data-slide-to='1')
+				li(data-target='#carousel-example-generic', data-slide-to='2')
+			.carousel-inner
+				.item.active
+					p(style="display:table; margin: auto; height: 200px;") great other things
+					.carousel-caption
+						h3 Feature 1
+				.item
+					p(style="display:table; margin: auto;height: 200px;") awesome new datas
+					.carousel-caption
+						h3 Feature 2
+				.item
+					p(style="display:table; margin: auto;height: 200px;") Cool new reports
+					.carousel-caption
+						h3 Feature 3
+
+			a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+				span.glyphicon.glyphicon-chevron-left
+			a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+				span.glyphicon.glyphicon-chevron-right

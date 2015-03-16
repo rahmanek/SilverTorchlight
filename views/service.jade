@@ -1,0 +1,51 @@
+script(type="text/ng-template" id="service.html")
+
+	.row
+		.col-md-1
+		.col-md-10
+			ol.breadcrumb
+				li
+					a(href="#") Home
+				li
+					a(href="#/tools") Tools
+				li.active Service Profiles
+		.col-md-1
+
+	.row 
+		.col-md-6
+			div(id="regionDescription" style = "margin-bottom:30px;")
+				h2 Service Code {{service.detail.service.code}} &nbsp
+				h3
+					.small Service Profile
+		.col-md-6
+			.regionSearch
+				input.form-control(id="serviceSearchBox" type='text' placeholder='Service Search')
+				button.btn.btn-default(id="serviceSearchButton" type='submit') Search
+	.row 
+		.col-md-5
+			.panel.panel-primary
+				.panel-heading
+					.panel-title
+						span Statewide Statistics for Top 3 Payers in 2012
+				table.table
+					tr
+						th Payments
+						th ${{service.stats.payments12View}}
+						th {{service.stats.paymentsChange}}%
+					tr
+						th Claims
+						th {{service.stats.claims12View}}
+						th {{service.stats.claimsChange}}%
+					tr
+						th Average Rate:
+						th ${{service.stats.averageRate12}}
+						th {{service.stats.averageRateChange}}%
+
+		.col-md-7
+			h4
+				a(href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/MedicareFeeforSvcPartsAB/Downloads/BETOSDescCodes.pdf") Betos Code
+				span  - {{service.detail.betos.code}}
+				br
+				.small {{service.detail.betos.cat2}} - {{service.detail.betos.cat3}}
+
+			p {{service.detail.service.description}}

@@ -27,7 +27,7 @@ module.exports = (grunt) ->
 		sass:
 			dist:
 				files:
-					'public/css/style.css': 'scss/style.scss'
+					'public/css/styles.css': 'scss/styles.scss'
 
 
 		watch:

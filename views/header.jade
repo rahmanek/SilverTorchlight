@@ -1,15 +1,55 @@
-div(id="mainContent" style="width:960px; margin:auto;")
-	div(style="display: table; margin: 15px auto 0 auto;")
-	nav.navbar.navbar-default
-		.container-fluid
-			.navbar-header
-				a.navbar-brand(href='#') Profile Search
 
-			div.navbar-form.navbar-left(role='search')
-				select.form-control#searchType
-					option(value="region") Region
-					option(value="provider") Provider
-					option(value="payer") Payer
-				.form-group(style="padding-left:20px;")
-					input.form-control(type='text' placeholder='Search')#searchBox
-					button.btn.btn-default#searchButton Search
+#header
+	a(href="http://www.chia.website")
+		#logoContainer Center for Health Information and Analysis
+			svg#logoFeatures
+				rect#logoRect(x="35" y="55" width="7" height="7")
+				rect#logoRect(x="55" y="55" width="7" height="7")
+				rect#logoRect(x="75" y="55" width="7" height="7")
+				rect#logoRect(x="345" y="130" width="7" height="7")
+
+	.navbar
+		.container
+			ul.nav.navbar-nav
+				li
+					a(href='#') Home
+				li.dropdown
+					a(href='#' data-toggle='dropdown') Publications
+						span.caret
+					ul.dropdown-menu(role='menu')
+						li
+							a(href='#') Regulations
+						li
+							a(href='#') Reports
+				li.dropdown
+					a(href='#' data-toggle='dropdown') Data Services
+						span.caret
+					ul.dropdown-menu(role='menu')
+						li
+							a(href='#') Dataset Information
+						li
+							a(href='#') Access Data
+						li
+							a(href='#') Submissions
+						li 
+							a(href='#/tools') Interactive Tools
+				li.dropdown
+					a(href='#' data-toggle='dropdown') About
+						span.caret
+					ul.dropdown-menu(role='menu')
+						li
+							a(href='#') Our Mission
+						li
+							a(href='#') Initiatives
+						li
+							a(href='#') Contact
+						li
+							a(href='#') Careers
+				li.dropdown
+					a(href='#/tools' data-toggle='dropdown') Dev
+						span.caret
+					ul.dropdown-menu(role='menu')
+						li
+							a(href='#/services') Service Profiles
+						li
+							a(href='#/regions') Regional Profiles

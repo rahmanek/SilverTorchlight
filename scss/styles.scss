@@ -1,0 +1,123 @@
+
+$primary1: #004f6d;
+$primary1Red: 0;
+$primary1Green: 79;
+$primary1Blue: 109;
+$primary2: #9b9993;
+$primary3: #FFFFFF;
+$accent1: #009977;
+$accent2: #5e68c4;
+$accent3: #9e540a;
+$accent4: #495928;
+$accent5: #0038a8;
+$accent6: #686663;
+$width: 960px;
+
+#header{
+	background-color: $primary1;
+
+	#logoContainer{
+		display:table;
+		height:200px;
+		margin:auto;
+		line-height:200px;
+		color: #FFFFFF;
+		text-align:center;
+		font-size:25px;
+		position:relative;
+	}
+
+	#logoFeatures{
+		position:absolute;
+		left:0;
+		top:0;
+		width:500px;
+	}
+
+	#logoRect{
+		fill:#FFFFFF;
+	}
+
+	.navbar{
+		border-radius:0;
+		background-color: $primary1;
+		color: $primary3;
+		border: 0 none $primary1;
+
+		li a {
+				color: #FFFFFF;
+				background-color: $primary1;
+		}
+
+
+		li a:hover, li a:focus, .open > a, .open > a:hover, .open > a:focus{
+			background-color: $accent2;
+			color: #FFFFFF;
+			opacity: .9;
+		}
+
+		.dropdown-menu, .dropdown-menu > li > a{
+			background-color: $primary1;
+			color: #FFFFFF;
+			border: 0 solid #000000
+		}
+
+		.dropdown-menu li a:hover{
+			background-color: #FFFFFF;
+			color: #222222;
+			opacity: .5;
+		}
+	}
+}
+
+.subnav{
+	border: 1px solid $primary1;
+	display:inline-block;
+}
+
+.panel-primary{
+	border-color: rgba($primary1Red, $primary1Green, $primary1Blue,.5);
+
+	> .panel-heading{
+		background-color: rgba($primary1Red, $primary1Green, $primary1Blue,.5);
+		border: 0 solid white;
+	}
+}
+.regionSearch{
+	margin-top:35px;
+	input{
+		display:inline;
+		width:200px
+
+	}
+
+	button{
+		margin: 0 0 0 10px;
+	}
+}
+
+.donutText{
+	text-anchor: middle;
+	#category{
+		font-size:24px;
+	}
+
+}
+
+#tmeGraph{
+
+
+	path{ 
+		stroke: steelblue;
+		stroke-width: 2;
+		fill: none;
+	}
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: grey;
+		stroke-width: 1;
+		shape-rendering: crispEdges;
+	}
+}

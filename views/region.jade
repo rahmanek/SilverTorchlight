@@ -1,23 +1,81 @@
 script(type="text/ng-template" id="region.html")
-	div(id="regionDescription")
-		h2 {{region.description.longName}}
-		p Regional Profile
-	div(id="subnav" style="width:960px; margin: 30px 0 30px 0;")
-		ul.nav.nav-tabs
-			li(ng-click = "regionTab = 'regionTme'")
-				a(href='javascript:;') TME
-			li(ng-click = "regionTab = 'regionPayerMix'")
-				a(href='javascript:;') Payer Mix
-			li(ng-click = "regionTab = 'regionOther'")
-				a(href='javascript:;') Other
 
-	div(ng-show="regionTab == 'regionTme'" style="position:relative;")
-		div(id="tmeDonut" style="width 460px;")
-		div(id="tmeDonutInfo" style="width:500px; height: 200px;position:absolute; right:0; top:0;border-left: 3px solid #000000; padding-left: 15px;")
-			span(id="tmeDonutInfoCat" style="font-size:24px;") {{region.donut.category}}
-			p(style="margin-top:20px;") Medical Expense PMM: ${{region.donut.value}}
-			p(style="margin-top:20px;") Percent of Total PMM: {{region.donut.percent}} %
-	div(ng-show="regionTab == 'regionPayerMix'")
-		p stuff 2
-	div(ng-show="regionTab == 'regionOther'")
-		p stuff 3
+	.row
+		.col-md-1
+		.col-md-10
+			ol.breadcrumb
+				li
+					a(href="#") Home
+				li
+					a(href="#/tools") Tools
+				li.active Regional Profiles
+		.col-md-1
+
+	.row 
+		.col-md-6
+			div(id="regionDescription" style = "margin-bottom:30px;")
+				h2 {{region.detail.longName}} &nbsp
+				p Regional Profile
+		.col-md-6
+			.regionSearch
+				input.form-control(id="regionSearchBox" type='text' placeholder='Region Search')
+				button.btn.btn-default(id="regionSearchButton" type='submit') Search
+
+
+	.row
+		.col-md-3
+			.panel.panel-primary
+				.panel-heading
+					.panel-title 
+						h5 Demographics
+				table.table
+					tr
+						th Income:
+						th ${{region.income}}
+					tr
+						th FFS Enrollment:
+						th {{region.apmPercent}}%
+					tr
+						th APM Enrollment:
+						th {{region.ffsPercent}}%
+					tr
+						th Residents:
+						th {{region.residentPercent}}%
+					tr
+						th Members:
+						th {{region.memberPercent}}%
+
+
+		.col-md-3
+			.panel.panel-primary
+				.panel-heading
+					.panel-title 
+						h5 Membership by Commercial Payer
+				table.table
+					tr(ng-repeat="payer in region.payerMembers track by $index")
+						th {{$index + 1}}.
+						th {{payer.name}}
+						th {{payer.percent.toFixed(2)}}%
+
+		.col-md-6
+			.panel
+				.panel-body
+					p Region Map here
+	.row 
+		.col-md-12
+			.panel.panel-primary
+				.panel-heading
+						.panel-title Total Medical Expense
+				.panel-body
+					.row
+						.col-md-5#tmeDonut
+							svg#tmeSvg
+								g#tmeG
+									text.donutText(y=-30)
+										tspan#category {{region.donut.category}}
+									text.donutText
+										tspan#info Medical Expense PMM: ${{region.donut.value}}
+									text.donutText(y=20)
+										tspan#info Percent of Total PMM: {{region.donut.percent}} %
+						.col-md-7#tmeGraph
+
