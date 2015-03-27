@@ -1,6 +1,6 @@
 
 #header
-	a(href="http://www.chia.website")
+	a(href="http://localhost:8080/#/")
 		#logoContainer Center for Health Information and Analysis
 			svg#logoFeatures
 				rect#logoRect(x="35" y="55" width="7" height="7")
@@ -12,7 +12,7 @@
 		.container
 			ul.nav.navbar-nav
 				li
-					a(href='#') Home
+					a(href='#/') Home
 				li.dropdown
 					a(href='#' data-toggle='dropdown') Publications
 						span.caret
@@ -31,8 +31,7 @@
 							a(href='#') Access Data
 						li
 							a(href='#') Submissions
-						li 
-							a(href='#/tools') Interactive Tools
+
 				li.dropdown
 					a(href='#' data-toggle='dropdown') About
 						span.caret
@@ -46,10 +45,14 @@
 						li
 							a(href='#') Careers
 				li.dropdown
-					a(href='#/tools' data-toggle='dropdown') Dev
+					a(href='#/tools' data-toggle='dropdown') Interactive Tools
 						span.caret
 					ul.dropdown-menu(role='menu')
 						li
-							a(href='#/services') Service Profiles
+							a(href='#/serviceSummary') Service Profiles
 						li
-							a(href='#/regions') Regional Profiles
+							a(href='#/regionSummary') Regional Profiles
+						li
+							a(href='#/providerSummary') Provider Profiles
+						li 
+							a(href='#/tools') Data Channels

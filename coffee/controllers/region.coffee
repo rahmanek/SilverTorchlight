@@ -2,11 +2,19 @@
 Angular.controller 'region', ($scope, $timeout, $routeParams)->
 
 
+	$scope.region = 
+		view: 'profile'
+
+
+
+
+
 	buildDonut = (data) ->
 
 		# Prepare Donut Data
 
 		donutData = []
+
 
 		for datum in data
 			if datum.description == "TME Commercial Inpatient PMPM Dollars" or 
@@ -79,15 +87,14 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 			$scope.$apply()
 
 
-	listPayers = () ->
+	listPayers = (data) ->
 
 		payerMembers = []
-
-		for datum in $scope.region.data
+		for datum in data
 			if datum.description == "Region Member Count"
 				regionCount = datum.value
 
-		for datum in $scope.region.data
+		for datum in data
 			if datum.description == "Aetna Member Count" or 
 			datum.description == "BCBS Member Count" or
 			datum.description == "BMC Member Count" or
@@ -112,7 +119,6 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 		return payerMembers.slice(0,5)
 
 	buildGraph = (request) ->
-
 		# Prepare Graph Data
 		data = []
 
@@ -123,8 +129,8 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 				record.calendarYear == 2012 or
 				record.calendarYear == 2013
 					data.push
-						date: record.calendarYear
-						close: record.value 
+						calendarYear: record.calendarYear
+						value: record.value 
 
 		# Prepare Graph Components
 		margin =
@@ -141,9 +147,9 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 		xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(4).tickFormat(d3.format())
 		yAxis = d3.svg.axis().scale(y).orient("left")
 		line = d3.svg.line().x (d) ->
-			x d.date
+			x d.calendarYear
 		.y (d) ->
-			y d.close
+			y d.value
 		
 		# Modify DOM
 		svg = d3.select("#tmeGraph")
@@ -154,14 +160,14 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
 		data.forEach (d) ->
-			d.date = +d.date
-			d.close = +d.close
+			d.calendarYear = +d.calendarYear
+			d.value = +d.value
 
 		x.domain d3.extent data, (d) ->
-			d.date
+			d.calendarYear
 
 		y.domain d3.extent data, (d) ->
-			d.close
+			d.value
 
 		svg.append("g")
 			.attr("class", "x axis")
@@ -182,11 +188,11 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 			.datum(data)
 			.attr("class", "line")
 			.attr "d", line
+			.style "stroke", (f) ->
+				return "green"
 
 
 	$timeout () ->
-
-		$scope.regionTab = 1
 
 		document.getElementById("regionSearchButton").addEventListener "click", () ->
 			search = document.getElementById("regionSearchBox").value
@@ -195,14 +201,12 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 		$.get document.settings.patriotHost + "region?regionId=" + $routeParams.id, (request) ->
 			if request.directive == "Affirmative"
 
-				detail = request.detail
-				data = request.results
+				data = request.results.data
 
-				$scope.region =
-					detail: detail
-					data: data
+				$scope.region.detail = request.results.detail
+				$scope.region.data = data
 
-				$scope.region.payerMembers = listPayers()
+				$scope.region.payerMembers = listPayers(data)
 				buildDonut(data)
 				buildGraph(data)
 
@@ -221,5 +225,11 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 					if datum.description == "Residents to Statewide Percent"
 						$scope.region['residentPercent'] = datum.value					
 					if datum.description == "Membership to Statewide Percent"
-						$scope.region['memberPercent'] = datum.value		
+						$scope.region['memberPercent'] = datum.value
+					if datum.description == "Public Coverage Percent"
+						$scope.region['publicCoverage'] = datum.value
+					if datum.description == "Private Coverage Percent"
+						$scope.region['privateCoverage'] = datum.value
+					if datum.description == "No Coverage Percent"
+						$scope.region['noCoverage'] = datum.value
 				$scope.$apply()

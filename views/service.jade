@@ -1,26 +1,7 @@
 script(type="text/ng-template" id="service.html")
 
-	.row
-		.col-md-1
-		.col-md-10
-			ol.breadcrumb
-				li
-					a(href="#") Home
-				li
-					a(href="#/tools") Tools
-				li.active Service Profiles
-		.col-md-1
+	include _serviceHeader.jade
 
-	.row 
-		.col-md-6
-			div(id="regionDescription" style = "margin-bottom:30px;")
-				h2 Service Code {{service.detail.service.code}} &nbsp
-				h3
-					.small Service Profile
-		.col-md-6
-			.regionSearch
-				input.form-control(id="serviceSearchBox" type='text' placeholder='Service Search')
-				button.btn.btn-default(id="serviceSearchButton" type='submit') Search
 	.row 
 		.col-md-5
 			.panel.panel-primary
@@ -40,12 +21,37 @@ script(type="text/ng-template" id="service.html")
 						th Average Rate:
 						th ${{service.stats.averageRate12}}
 						th {{service.stats.averageRateChange}}%
-
 		.col-md-7
-			h4
-				a(href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/MedicareFeeforSvcPartsAB/Downloads/BETOSDescCodes.pdf") Betos Code
-				span  - {{service.detail.betos.code}}
-				br
-				.small {{service.detail.betos.cat2}} - {{service.detail.betos.cat3}}
 
-			p {{service.detail.service.description}}
+
+			h4 Classification
+			table.table
+				tr(ng-if="service.detail.catLevel >= 1")
+					th Level 1: 
+					th(ng-bind-html="service.cat1Link")
+				tr(ng-if="service.detail.catLevel >= 2")
+					th Level 2: 
+					th(ng-bind-html="service.cat2Link")
+				tr(ng-if="service.detail.catLevel >= 3")
+					th Level 3: 
+					th(ng-bind-html="service.cat3Link")
+				tr(ng-if="service.detail.catLevel >= 4")
+					th Level 4: 
+					th(ng-bind-html="service.cat4Link")
+
+			div(ng-if="service.detail.catLevel == 5")
+				h4 Description
+				p {{service.detail.description}}
+				hr
+			div(ng-if="service.detail.catLevel < 5")
+				h4 Information
+				table.table
+					tr
+						th Category Level:
+						th {{service.detail.catLevel}}
+					tr
+						th Code Count:
+						th {{service.detail.codeCount}}
+					tr(ng-if="service.detail.catLevel == 4")
+						th Betos Code:
+						th {{service.detail.betosCode}}

@@ -1,24 +1,117 @@
 script(type="text/ng-template" id="home.html")
-	#carousel-example-generic.carousel.slide(data-ride='carousel', style='width:960px; margin:auto;')
-		ol.carousel-indicators
-				li.active(data-target='#carousel-example-generic', data-slide-to='0')
-				li(data-target='#carousel-example-generic', data-slide-to='1')
-				li(data-target='#carousel-example-generic', data-slide-to='2')
-			.carousel-inner
-				.item.active
-					p(style="display:table; margin: auto; height: 200px;") great other things
-					.carousel-caption
-						h3 Feature 1
-				.item
-					p(style="display:table; margin: auto;height: 200px;") awesome new datas
-					.carousel-caption
-						h3 Feature 2
-				.item
-					p(style="display:table; margin: auto;height: 200px;") Cool new reports
-					.carousel-caption
-						h3 Feature 3
+	#home
+		.row
+			.col-md-1
+			.col-md-10
+				#mainCarousel.carousel.slide(data-ride='carousel')
+					ol.carousel-indicators
+						li.active(data-target='#mainCarousel', data-slide-to='0')
+						li(data-target='#mainCarousel', data-slide-to='1')
+						li(data-target='#mainCarousel', data-slide-to='2')
+					.carousel-inner
+						.item.active
+							.row
+								.col-md-7
+									h3 CHIA's Annual Report
+									p.carouselText The 2014 Annual Report on the Performance of the Massachusetts Health Care System includes a first-ever calculation of the Commonwealth’s Total Health Care Expenditures (THCE). THCE is a measure of total statewide spending for health care in the Commonwealth. The report includes specific health care expenditures for Massachusetts residents from public and private sources. The findings from this report informed the Health Policy Commission’s 2014 Health Care Cost Trends Hearing, which took place on October 6 and 7 2014
+								.col-md-5
+									img(src="images/mass.png")
+						.item
+							.row
+								.col-md-7
+									h3 A Focus on Provider Quality
+									p.carouselText Health care quality in Massachusetts, as measured by the Commonwealth’s Standard Quality Measure Set (SQMS), is strong and improving. There are, however, apparent opportunities for continued improvement. Performance on many quality measures is not substantially different from similarly high national rates, while the cost of health care in Massachusetts is comparatively high. In addition, there are large differences between the highest and lowest scores received by providers on some measures, suggesting variation in provider quality
+								.col-md-5
+									img(src="images/big-data.jpg")
+						.item
+							.row
+								.col-md-7
+									h3 Relative Price Report
+									p.carouselText This brief provides an overview of the Massachusetts hospital industry in fiscal year (FY) 2013 and includes statewide comparative data on Massachusetts hospitals. This brief and accompanying individual hospital profiles, databook, and chartbook update CHIA’s March 2014 publication of Massachusetts Hospital Profiles: Data through Fiscal Year 2012
+								.col-md-5
+									img(src="images/mass.png")
+				br
+				br
+			.col-md-1
+		.row
+			.col-md-4
+				p Latest
+				ul(class="list-group")
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/assets/Uploads/relative-price-brief-2013.pdf") Provider Price Variation in the Massachusetts Health Care Market
+						h5.small
+							span Policy Brief
+							span.latestDate Februaruy 2015
+					li(class="list-group-item") 
+						a(href="https://twitter.com/Mass_CHIA/status/573901909377032192") CHIA Relative Price briefing featured...
+						h5.small
+							span Twitter
+							span.latestDate March 2015
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/assets/Uploads/APM-Policy-Brief.pdf") Adoption of Alternative Payment Methodologies in Massachusetts
+						h5.small
+							span Policy Brief
+							span.latestDate January 2015
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/assets/Uploads/CHIA-Brief-Managed-Care-02042015.pdf") The Performance of the Massachusetts Health Care System
+						h5.small
+							span Policy Brief
+							span.latestDate January 2015
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/bbj-blue-cross-blue-shield-study-prompts-debate-on-quality-contracts/") BBJ: ​Blue Cross Blue Shield study prompts debate on quality contracts
+						h5.small
+							span In the News
+							span.latestDate November 2014
+			.col-md-4
+				p Key Reports
+				ul(class="list-group")
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/annual-report-on-the-performance-of-the-massachusetts-health-care-system-2014") Annual Report
+						h5.small
+							span Report
+							span.latestDate September 2014
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/assets/Uploads/A-Focus-on-Provider-Quality-Jan-2015.pdf") A Focus on Provider Quality
+						h5.small
+							span Report
+							span.latestDate January 2015
+					li(class="list-group-item") 
+						a(href="http://www.chiamass.gov/assets/docs/r/hospital-profiles/2013/acutehospsfulldocumentoptimized.pdf") Massachusetts Hospital Profiles
+						h5.small
+							span Policy Brief
+							span.latestDate January 2015
 
-			a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-				span.glyphicon.glyphicon-chevron-left
-			a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
-				span.glyphicon.glyphicon-chevron-right
+				p Popular Links
+				ul(class="list-group")
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/annual-report-on-the-performance-of-the-massachusetts-health-care-system-2014") APCD
+
+					li(class="list-group-item") 
+						a(href="http://chiamass.gov/assets/Uploads/A-Focus-on-Provider-Quality-Jan-2015.pdf") Contact Us
+
+					li(class="list-group-item") 
+						a(href="http://www.chiamass.gov/assets/docs/r/hospital-profiles/2013/acutehospsfulldocumentoptimized.pdf") Regulations
+
+			.col-md-4
+				p Health Dashboard
+				table.table
+					tr
+						th THCE
+						th $55,304 M
+						th.red $-22 M
+					tr
+						th RP Index
+						th 74.48 
+						th.green .21
+					tr
+						th APM Enrollment
+						th 54.73%
+						th.green .6%
+					tr
+						th ER Visit Index
+						th 252
+						th.red 14
+					tr
+						th Provider Quality Index
+						th 685.32
+						th.red .14

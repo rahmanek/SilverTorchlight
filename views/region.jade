@@ -1,26 +1,6 @@
 script(type="text/ng-template" id="region.html")
 
-	.row
-		.col-md-1
-		.col-md-10
-			ol.breadcrumb
-				li
-					a(href="#") Home
-				li
-					a(href="#/tools") Tools
-				li.active Regional Profiles
-		.col-md-1
-
-	.row 
-		.col-md-6
-			div(id="regionDescription" style = "margin-bottom:30px;")
-				h2 {{region.detail.longName}} &nbsp
-				p Regional Profile
-		.col-md-6
-			.regionSearch
-				input.form-control(id="regionSearchBox" type='text' placeholder='Region Search')
-				button.btn.btn-default(id="regionSearchButton" type='submit') Search
-
+	include _regionHeader.jade
 
 	.row
 		.col-md-3
@@ -45,7 +25,21 @@ script(type="text/ng-template" id="region.html")
 						th Members:
 						th {{region.memberPercent}}%
 
-
+		.col-md-3
+			.panel.panel-primary
+				.panel-heading
+					.panel-title 
+						h5 Health Statistics
+				table.table
+					tr
+						th Public Coverage:
+						th ${{region.publicCoverage}}
+					tr
+						th Private Coverage:
+						th ${{region.privateCoverage}}
+					tr
+						th No Coverage:
+						th ${{region.noCoverage}}
 		.col-md-3
 			.panel.panel-primary
 				.panel-heading
@@ -57,10 +51,8 @@ script(type="text/ng-template" id="region.html")
 						th {{payer.name}}
 						th {{payer.percent.toFixed(2)}}%
 
-		.col-md-6
-			.panel
-				.panel-body
-					p Region Map here
+
+
 	.row 
 		.col-md-12
 			.panel.panel-primary

@@ -12,17 +12,17 @@ Angular.config ['$routeProvider',($routeProvider) ->
 			templateUrl: 'service.html'
 			controller: 'service'
 
-		.when '/services',
-			templateUrl: 'services.html'
-			controller: 'services'
-
-		.when '/regions',
-			templateUrl: 'regions.html'
-			controller: 'regions'
+		.when '/serviceSummary',
+			templateUrl: 'serviceSummary.html'
+			controller: 'serviceSummary'
 
 		.when '/region',
 			templateUrl: 'region.html'
 			controller: 'region'
+
+		.when '/regionSummary',
+			templateUrl: 'regionSummary.html'
+			controller: 'regionSummary'
 
 		.when '/provider',
 			templateUrl: 'provider.html'
@@ -35,9 +35,13 @@ Angular.config ['$routeProvider',($routeProvider) ->
 		.when '/home',
 			templateUrl: 'home.html'
 			controller: 'home'
+			
+		.when '/',
+			templateUrl: 'home.html'
+			controller: 'home'
 
 		.otherwise
-			redirectTo: '#'
+			redirectTo: '#/home'
 	]
 
 

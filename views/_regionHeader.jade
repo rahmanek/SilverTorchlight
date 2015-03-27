@@ -1,0 +1,25 @@
+.row
+	.col-md-1
+	.col-md-10
+		ol.breadcrumb
+			li
+				a(href="#") Home
+			li
+				a(href="#/tools") Tools
+			li.active Regional Profiles
+	.col-md-1
+
+.row 
+	.col-md-6
+		div(id="regionDescription" style = "margin-bottom:30px;")
+			h2
+				span(ng-if="region.view == 'summary'") Region Summary
+				span(ng-if="region.view == 'profile'")
+					span  {{region.detail.longName}}
+					span &nbsp
+			h3
+				.small Regional Profiles
+	.col-md-6
+		.regionSearch
+			input.form-control(id="regionSearchBox" type='text' placeholder='Region Search')
+			button.btn.btn-default(id="regionSearchButton" type='submit') Search

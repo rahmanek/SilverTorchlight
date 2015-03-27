@@ -1,0 +1,27 @@
+
+.row
+	.col-md-1
+	.col-md-10
+		ol.breadcrumb
+			li
+				a(href="#") Home
+			li
+				a(href="#/tools") Tools
+			li.active Service Profiles
+	.col-md-1
+
+.row 
+	.col-md-6
+		div(id="regionDescription" style = "margin-bottom:30px;")
+			h2
+				span(ng-if="service.view == 'summary'") Service Summary
+				span(ng-if="service.view == 'profile'")
+					span(ng-if="service.detail.catLevel == 5") Code
+					span  {{service.detail.label}}
+					span &nbsp
+			h3
+				span.small Service Profile
+	.col-md-6
+		.regionSearch
+			input.form-control(id="serviceSearchBox" type='text' placeholder='Service Search')
+			button.btn.btn-default(id="serviceSearchButton" type='submit') Search

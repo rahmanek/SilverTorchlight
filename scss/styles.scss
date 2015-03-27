@@ -108,7 +108,6 @@ $width: 960px;
 
 
 	path{ 
-		stroke: steelblue;
 		stroke-width: 2;
 		fill: none;
 	}
@@ -119,5 +118,46 @@ $width: 960px;
 		stroke: grey;
 		stroke-width: 1;
 		shape-rendering: crispEdges;
+	}
+}
+
+#home{
+
+
+	.carouselText{
+		height:125px;
+		overflow:hidden;
+	}
+
+	.carousel-indicators{
+		position:absolute;
+		bottom: 0px;
+		width: auto;
+
+		li{
+			background-color: #999999;
+			border: 1px solid #999999;
+		}
+
+		left: auto;
+		margin-left: 0;
+		display:inline-block
+
+	}
+	.carousel-inner{
+		.item{
+			height:250px;
+		}
+	}
+	.latestDate{
+		padding: 0 0 0 55px;
+	}
+
+	.red{
+		color:red;
+	}
+
+	.green{
+		color:green;
 	}
 }

@@ -42,10 +42,20 @@ module.exports = (grunt) ->
 					keepalive:true
 					base:"public"
 
+		copy:
+			main:
+				files: [
+					cwd:"images"
+					expand: true
+					src: ["**"]
+					dest: "public/images"
+				]
+
 	grunt.loadNpmTasks "grunt-contrib-watch"
 	grunt.loadNpmTasks "grunt-contrib-coffee"
 	grunt.loadNpmTasks "grunt-contrib-jade"
 	grunt.loadNpmTasks "grunt-contrib-connect"
 	grunt.loadNpmTasks "grunt-contrib-concat"
+	grunt.loadNpmTasks "grunt-contrib-copy"
 	grunt.loadNpmTasks "grunt-sass"
-	grunt.registerTask "default", ["concat","coffee","jade","sass","watch"]
+	grunt.registerTask "default", ["copy","concat","coffee","jade","sass","watch"]
