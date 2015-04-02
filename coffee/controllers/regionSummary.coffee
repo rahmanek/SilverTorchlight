@@ -1,6 +1,22 @@
 
 Angular.controller 'regionSummary', ($scope, $timeout)->
 
+	activateRegion = (d) ->
+		for region in detail
+			if d[0].regionId == region.regionId
+				longName = region.longName
+		$scope.regionSummary.expense = d
+		$scope.regionSummary.longName = longName
+
+
+		$scope.$apply()
+
+		d3.selectAll(".line")
+		.style "stroke", (f) ->
+			if f[0].regionId == d[0].regionId then return "purple"
+			if f[0].regionId == "0" then return "green"
+			else return "#E3E3E3"
+
 	buildGraph = (data, detail) ->
 
 		# Prepare Graph Components
@@ -55,43 +71,59 @@ Angular.controller 'regionSummary', ($scope, $timeout)->
 			.style("text-anchor", "end")
 			.text "TME PMPM($)"
 
+
+		activateRegion = (d) ->
+			for region in detail
+				if d[0].regionId == region.regionId
+					longName = region.longName
+			d.sort (a,b) ->
+				b.calendarYear - a.calendarYear
+			$scope.regionSummary.expense = d
+			$scope.regionSummary.longName = longName
+
+			$scope.$apply()
+
+			d3.selectAll(".line")
+			.style "stroke", (f) ->
+				if f[0].regionId == d[0].regionId then return "purple"
+				if f[0].regionId == "0" then return "green"
+				else return "#E3E3E3"
+
 		for element in data
 			graphLines = svg.append "path"
 				.datum element
 				.attr "class", "line"
 				.style "stroke", (d) ->
-					return "green"
+					if d[0].regionId == "0" then return "green"
+					return "#E3E3E3"
 				.attr "d", line
 
-				.on "mouseover", (d) ->
-					for region in detail
-						if d[0].regionId == region.regionId
-							longName = region.longName
-					$scope.regionSummary =
-						expense: d
-						longName: longName
+				.on "mouseover", activateRegion
 
-					$scope.$apply()
-
-					d3.selectAll(".line")
-					.style "stroke", (f) ->
-						if f[0].regionId != d[0].regionId
-							return "green"
-						else return "blue"
+			tiles = d3.select("#regionListing")
+				.append "div"
+		return svg
 
 
 	$timeout () ->
 
 		document.getElementById("regionSearchButton").addEventListener "click", () ->
 			search = document.getElementById("regionSearchBox").value
-			location.href = "#/region?id=" + search
+			if search != ""
+				location.href = "#/region?regionId=" + search
 
 		$scope.region = 
 			view: 'summary'
+		$scope.regionSummary = {}
+
 
 		$.get document.settings.patriotHost + "region?description=TME Commercial PMPM Dollars", (request) ->
+			detail = request.results.detail
+			$scope.region.detailList = request.results.detail
+			$scope.$apply()
 
 			lineArray = []
+
 			for line in [0..8]
 				lineComponent = []
 				for datum in request.results.data
@@ -101,6 +133,27 @@ Angular.controller 'regionSummary', ($scope, $timeout)->
 						datum.value = +datum.value
 						lineComponent.push datum
 				lineArray.push lineComponent
-			detail = request.results.detail
 
-			buildGraph(lineArray,detail)
+			svg = buildGraph(lineArray,detail)
+
+			regionList = d3.select("#regionList")
+
+			for region in detail
+				region.url = "region?regionId=" + region.regionId
+
+			regionListDivs = regionList.selectAll "div"
+				.data lineArray
+				.enter()
+				.append "div"
+
+			regionListDivs
+				.attr "class", "list-group-item"
+				.append "a"
+				.attr "href", (d) ->
+					return "#/region?regionId=" + d[0].regionId
+				.text (d) ->
+					for region in detail 
+						if d[0].regionId == region.regionId
+							return region.longName
+				.on "mouseover", (d) ->
+					activateRegion(d)

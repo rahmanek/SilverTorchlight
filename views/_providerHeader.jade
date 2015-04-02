@@ -1,0 +1,26 @@
+
+.row
+	.col-md-1
+	.col-md-10
+		ol.breadcrumb
+			li
+				a(href="#") Home
+			li
+				a(href="#/tools") Tools
+			li.active Provider Profiles
+	.col-md-1
+
+.row 
+	.col-md-6
+		div(id="providerDescription" style = "margin-bottom:30px;")
+			h2
+				span(ng-if="provider.view == 'summary'") Provider Summary
+				span(ng-if="provider.view == 'profile'")
+					span  {{provider.detail.hospitalName}}
+					span &nbsp
+			h3
+				span.small Provider Profile
+	.col-md-6
+		.regionSearch
+			input.form-control(id="providerSearchBox" type='text' placeholder='Provider Search')
+			button.btn.btn-default(id="providerSearchButton" type='submit') Search

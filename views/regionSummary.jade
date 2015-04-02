@@ -4,10 +4,17 @@ script(type="text/ng-template" id="regionSummary.html")
 	include _regionHeader.jade
 
 	.row
+		.col-md-12
+			.panel.panel-primary
+				.panel-heading
+					.panel-title 
+						span Commercial Total Medical Expenses
+		.col-md-2
+			#regionList
 		.col-md-8
 			#tmeGraph
-		.col-md-4
-			h3 {{regionSummary.longName}}
+		.col-md-2
+			h3 {{regionSummary.longName}} 
 			table.table
 				tr(ng-repeat="expense in regionSummary.expense")
 					th {{expense.calendarYear}}

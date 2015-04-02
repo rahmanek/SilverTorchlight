@@ -3,12 +3,21 @@ script(type="text/ng-template" id="serviceSummary.html")
 	include _serviceHeader.jade
 
 	.row
-		.col-md-3
+		.col-md-1
+			h4 	
+		.col-md-2
 			h4 Category Level 1
-		.col-md-3
-			h4 Category Level 2
-		.col-md-3
-			h4 Category Level 3
-		.col-md-3
-			h4 Category Level 4
+				ul(class="list-group")
+					li(class="list-group-item" ng-repeat="item in serviceSummary.cat1List")
+						a(ng-click="stuff()") {{item.cat1}}
 
+		.col-md-2
+			h4 Category Level 2
+		.col-md-2
+			h4 Category Level 3
+		.col-md-2
+			h4 Category Level 4
+		.col-md-2
+			h4 Code
+		.col-md-1
+			h4 	

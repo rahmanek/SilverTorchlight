@@ -33,13 +33,13 @@ script(type="text/ng-template" id="region.html")
 				table.table
 					tr
 						th Public Coverage:
-						th ${{region.publicCoverage}}
+						th {{region.publicCoverage}}%
 					tr
 						th Private Coverage:
-						th ${{region.privateCoverage}}
+						th {{region.privateCoverage}}%
 					tr
 						th No Coverage:
-						th ${{region.noCoverage}}
+						th {{region.noCoverage}}%
 		.col-md-3
 			.panel.panel-primary
 				.panel-heading
@@ -50,9 +50,9 @@ script(type="text/ng-template" id="region.html")
 						th {{$index + 1}}.
 						th {{payer.name}}
 						th {{payer.percent.toFixed(2)}}%
-
-
-
+		.col-md-3
+			object(id="mapSvg" data="images/regionMap.svg" type="image/svg+xml")
+			a(href="http://chia.website/map") Explore Map Data
 	.row 
 		.col-md-12
 			.panel.panel-primary
@@ -71,3 +71,8 @@ script(type="text/ng-template" id="region.html")
 										tspan#info Percent of Total PMM: {{region.donut.percent}} %
 						.col-md-7#tmeGraph
 
+	.row 
+		.col-md-3
+			h4 Region Hospitals
+			ul.list-group
+				li.list-group-item(ng-repeat="hospital in region.hospitalList") {{hospital.hospitalName}}

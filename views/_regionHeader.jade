@@ -21,5 +21,9 @@
 				.small Regional Profiles
 	.col-md-6
 		.regionSearch
-			input.form-control(id="regionSearchBox" type='text' placeholder='Region Search')
+			select(id="regionSearchBox" name="select")
+				option
+					span Select Region
+				option(ng-repeat="region in region.detailList" value="{{region.regionId}}" ) 
+					span {{region.longName}}
 			button.btn.btn-default(id="regionSearchButton" type='submit') Search

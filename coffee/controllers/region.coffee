@@ -5,16 +5,11 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 	$scope.region = 
 		view: 'profile'
 
-
-
-
-
 	buildDonut = (data) ->
 
 		# Prepare Donut Data
 
 		donutData = []
-
 
 		for datum in data
 			if datum.description == "TME Commercial Inpatient PMPM Dollars" or 
@@ -196,13 +191,20 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 
 		document.getElementById("regionSearchButton").addEventListener "click", () ->
 			search = document.getElementById("regionSearchBox").value
-			location.href = "#/region?id=" + search
+			if search != ""
+				location.href = "#/region?regionId=" + search
 
-		$.get document.settings.patriotHost + "region?regionId=" + $routeParams.id, (request) ->
+		$.get document.settings.patriotHost + "region?regionId=" + $routeParams.regionId, (request) ->
 			if request.directive == "Affirmative"
 
 				data = request.results.data
 
+				if $routeParams.regionId != "0"
+					document.getElementById("mapSvg")
+						.getSVGDocument()
+						.getElementById("region" + $routeParams.regionId)
+						.style
+						.fill = document.settings.primary1.hex
 				$scope.region.detail = request.results.detail
 				$scope.region.data = data
 
@@ -227,9 +229,15 @@ Angular.controller 'region', ($scope, $timeout, $routeParams)->
 					if datum.description == "Membership to Statewide Percent"
 						$scope.region['memberPercent'] = datum.value
 					if datum.description == "Public Coverage Percent"
-						$scope.region['publicCoverage'] = datum.value
+						$scope.region['publicCoverage'] = Math.round(datum.value * 10000)/100
 					if datum.description == "Private Coverage Percent"
-						$scope.region['privateCoverage'] = datum.value
+						$scope.region['privateCoverage'] = Math.round(datum.value * 10000)/100
 					if datum.description == "No Coverage Percent"
-						$scope.region['noCoverage'] = datum.value
+						$scope.region['noCoverage'] = Math.round(datum.value * 10000)/100
 				$scope.$apply()
+				$.get document.settings.patriotHost + "region?description=", (request) ->
+					$scope.region.detailList = request.results.detail
+					$scope.$apply()
+				$.get document.settings.patriotHost + "provider?region=" + $scope.region.detail.longName, (request) ->
+					$scope.region.hospitalList = request.results.detail
+					$scope.$apply()
