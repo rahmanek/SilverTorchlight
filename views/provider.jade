@@ -12,3 +12,24 @@ script(type="text/ng-template" id="provider.html")
 				tr
 					th Cohort
 					th {{provider.detail.cohort}}
+				tr
+					th Revenue
+					th ${{provider.stats.revenue}}
+				tr
+					th Margin
+					th {{provider.stats.margin}}%
+		.col-md-1
+		.col-md-5
+			h3 Relative Price
+			table.table
+				tr
+					th Payer
+					th Blended
+					th Inpatient
+					th Outpatient
+				tr(ng-repeat="payer in provider.payers")
+					th {{payer.name}}
+					th {{payer.blended.value}}
+					th {{payer.inpatient.value}}
+					th {{payer.outpatient.value}}
+		.col-md-1

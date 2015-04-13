@@ -1,23 +1,37 @@
 script(type="text/ng-template" id="serviceSummary.html")
 
 	include _serviceHeader.jade
-
-	.row
-		.col-md-1
-			h4 	
-		.col-md-2
-			h4 Category Level 1
-				ul(class="list-group")
-					li(class="list-group-item" ng-repeat="item in serviceSummary.cat1List")
-						a(ng-click="stuff()") {{item.cat1}}
-
-		.col-md-2
-			h4 Category Level 2
-		.col-md-2
-			h4 Category Level 3
-		.col-md-2
-			h4 Category Level 4
-		.col-md-2
-			h4 Code
-		.col-md-1
-			h4 	
+	#serviceSummary
+		.row
+			.col-md-3
+			.col-md-6.well
+				.col-md-6
+					h4 {{serviceSummary.currentSelection}}
+				.col-md-6
+					h4(ng-bind-html="serviceSummary.infoLink")
+			.col-md-3
+		.row
+			.col-md-1
+				h4 	
+			.col-md-2
+				h4 Category Level 1
+				.list-group
+					a.list-group-item(href="javascript:;" class="cat1Class" data-catName="{{item}}" id="{{$index}}Cat1Button" ng-repeat="item in serviceSummary.cat1List") {{item}}
+			.col-md-2
+				h4 Category Level 2
+				.list-group
+					a.list-group-item(href="javascript:;" class="cat2Class" data-catName="{{item}}" id="{{$index}}Cat2Button" ng-repeat="item in serviceSummary.cat2List") {{item}}
+			.col-md-2
+				h4 Category Level 3
+				.list-group
+					a.list-group-item(href="javascript:;" class="cat3Class" data-catName="{{item}}" id="{{$index}}Cat3Button" ng-repeat="item in serviceSummary.cat3List") {{item}}
+			.col-md-2
+				h4 Category Level 4
+				.list-group
+					a.list-group-item(href="javascript:;" class="cat4Class" data-catName="{{item}}" id="{{$index}}Cat4Button" ng-repeat="item in serviceSummary.cat4List") {{item}}
+			.col-md-2
+				h4 Code
+				.list-group
+					a.list-group-item(href="javascript:;" class="cat5Class" data-catName="{{item}}" id="{{$index}}Cat5Button" ng-repeat="item in serviceSummary.cat5List") {{item}}
+			.col-md-1
+				h4 	
