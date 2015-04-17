@@ -32,6 +32,12 @@ Angular.config ['$routeProvider',($routeProvider) ->
 			templateUrl: 'providerSummary.html'
 			controller: 'providerSummary'
 
+		.when '/maps',
+			templateUrl: 'maps.html'
+
+		.when '/subject',
+			templateUrl: 'subject.html'
+
 		.when '/tools',
 			templateUrl: 'tools.html'
 			controller: 'tools'

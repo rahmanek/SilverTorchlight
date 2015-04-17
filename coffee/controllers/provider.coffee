@@ -23,6 +23,10 @@ Angular.controller 'provider', ($scope, $timeout, $routeParams, $sce)->
 				for datum in request.results.data
 					if datum.description == "Margin Dollars" and datum.calendarYear == 2013 then stats.margin = Math.round(datum.value*10000)/100
 					if datum.description == "Revenue Dollars" and datum.calendarYear == 2013 then stats.revenue = Number(datum.value).toLocaleString('en')
+					if datum.description == "RP Quintile" and datum.calendarYear == 2013
+						stats.rpQuintile = ""
+						for i in [1..datum.value]
+							stats.rpQuintile += "$"
 
 					buildRp = (rpType, datum) ->
 						if datum.value == "0" then datum.value = ""
@@ -44,6 +48,10 @@ Angular.controller 'provider', ($scope, $timeout, $routeParams, $sce)->
 					if datum.description.split(" ")[1] == "Inpatient" then buildRp("inpatient", datum)
 				$scope.provider.payers = payerArray
 				$scope.provider.stats = stats
+
+				hospitalProfileLink = "<a href=\"http://chiamass.gov/assets/docs/r/hospital-profiles/2013/" + $scope.provider.detail.hospitalProfLinker + ".pdf\">Hospital Profile</a>"
+
+				$scope.provider.hospitalProfileLink = $sce.trustAsHtml(hospitalProfileLink)
 
 				$scope.$apply()
 			$.get document.settings.patriotHost + "region?description=", (request2) ->

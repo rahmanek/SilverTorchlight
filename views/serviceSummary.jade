@@ -15,23 +15,23 @@ script(type="text/ng-template" id="serviceSummary.html")
 				h4 	
 			.col-md-2
 				h4 Category Level 1
-				.list-group
+				.list-group(style="height:500px; overflow:auto;")
 					a.list-group-item(href="javascript:;" class="cat1Class" data-catName="{{item}}" id="{{$index}}Cat1Button" ng-repeat="item in serviceSummary.cat1List") {{item}}
 			.col-md-2
 				h4 Category Level 2
-				.list-group
+				.list-group(style="height:500px; overflow:auto;")
 					a.list-group-item(href="javascript:;" class="cat2Class" data-catName="{{item}}" id="{{$index}}Cat2Button" ng-repeat="item in serviceSummary.cat2List") {{item}}
 			.col-md-2
 				h4 Category Level 3
-				.list-group
+				.list-group(style="height:500px; overflow:auto;")
 					a.list-group-item(href="javascript:;" class="cat3Class" data-catName="{{item}}" id="{{$index}}Cat3Button" ng-repeat="item in serviceSummary.cat3List") {{item}}
 			.col-md-2
 				h4 Category Level 4
-				.list-group
+				.list-group(style="height:500px; overflow:auto;")
 					a.list-group-item(href="javascript:;" class="cat4Class" data-catName="{{item}}" id="{{$index}}Cat4Button" ng-repeat="item in serviceSummary.cat4List") {{item}}
 			.col-md-2
 				h4 Code
-				.list-group
+				.list-group(style="height:500px; overflow:auto;")
 					a.list-group-item(href="javascript:;" class="cat5Class" data-catName="{{item}}" id="{{$index}}Cat5Button" ng-repeat="item in serviceSummary.cat5List") {{item}}
 			.col-md-1
 				h4 	

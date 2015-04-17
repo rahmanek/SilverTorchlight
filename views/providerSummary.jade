@@ -3,6 +3,22 @@ script(type="text/ng-template" id="providerSummary.html")
 
 	include _providerHeader.jade
 
-	.row
+	.row(style="margin-top:35px;")
 		.col-md-12
-			span hi
+			table.table
+				thead
+					tr
+						th Org ID
+						th Name
+						th System
+						th Revenue
+						th Margin
+						th Price Level
+				tbody 
+					tr(ng-repeat="provider in providerSummary.providers")
+						th {{provider.orgId}}
+						th {{provider.hospitalName}}
+						th {{provider.system}}
+						th ${{provider.revenue}}
+						th {{provider.margin}}%
+						th {{provider.rpStr}}
