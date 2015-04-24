@@ -1,5 +1,5 @@
 
-Angular = angular.module 'torch', ['ngRoute']
+Angular = angular.module 'torchlight', ['ngRoute']
 
 Angular.config ['$routeProvider',($routeProvider) ->
 

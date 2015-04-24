@@ -6,15 +6,15 @@ module.exports = (grunt) ->
 		concat:
 			dist:
 				src: [
-					"coffee/torch.coffee"
+					"coffee/torchlight.coffee"
 					"coffee/**/*.coffee"
 				]
-				dest: "tmp/torch.coffee"
+				dest: "tmp/torchlight.coffee"
 
 		coffee:
 			compile:
 				files:
-					"public/js/torch.js":"tmp/torch.coffee"
+					"public/js/torchlight.js":"tmp/torchlight.coffee"
 
 		jade:
 			compile:
