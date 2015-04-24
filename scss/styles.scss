@@ -13,14 +13,14 @@ $accent5: #0038a8;
 $accent6: #686663;
 $width: 960px;
 
+
 #header{
 	background-color: $primary1;
 
 	#logoContainer{
 		display:table;
-		height:200px;
-		margin:auto;
-		line-height:200px;
+		margin: 75px auto;
+		padding: 25px 0;
 		color: #FFFFFF;
 		text-align:center;
 		font-size:25px;
@@ -31,7 +31,14 @@ $width: 960px;
 		position:absolute;
 		left:0;
 		top:0;
-		width:500px;
+		width:85px;
+	}
+
+	#logoFeatures2{
+		position:absolute;
+		right:0;
+		bottom:0;
+		width:50px;
 	}
 
 	#logoRect{

@@ -1,64 +1,68 @@
 
 #header
-	a(href="http://localhost:8080/#/")
-		#logoContainer Center for Health Information and Analysis
-			svg#logoFeatures
-				rect#logoRect(x="35" y="55" width="7" height="7")
-				rect#logoRect(x="55" y="55" width="7" height="7")
-				rect#logoRect(x="75" y="55" width="7" height="7")
-				rect#logoRect(x="345" y="130" width="7" height="7")
+	.container
+		.col-md-12
+			a(href="http://localhost:8080/#/")
+				#logoContainer Center for Health Information and Analysis
+					svg#logoFeatures
+						rect#logoRect(x="35" y="0" width="7" height="7")
+						rect#logoRect(x="55" y="0" width="7" height="7")
+						rect#logoRect(x="75" y="0" width="7" height="7")
+					svg#logoFeatures2
+						rect#logoRect(x="0" y="140" width="7" height="7")
 
 	.navbar
 		.container
-			ul.nav.navbar-nav
-				li
-					a(href='#/') Home
-				li.dropdown
-					a(href='#' data-toggle='dropdown') Publications
-						span.caret
-					ul.dropdown-menu(role='menu')
-						li
-							a(href='#') Regulations
-						li
-							a(href='#') Reports
-				li.dropdown
-					a(href='#' data-toggle='dropdown') Data Services
-						span.caret
-					ul.dropdown-menu(role='menu')
-						li
-							a(href='#') Dataset Information
-						li
-							a(href='#') Access Data
-						li
-							a(href='#') Submissions
+			.col-md-12
+				ul.nav.navbar-nav
+					li
+						a(href='#/') Home
+					li.dropdown
+						a(href='#' data-toggle='dropdown') Publications
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#') Regulations
+							li
+								a(href='#') Reports
+					li.dropdown
+						a(href='#' data-toggle='dropdown') Data Services
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#') Dataset Information
+							li
+								a(href='#') Access Data
+							li
+								a(href='#') Submissions
 
-				li.dropdown
-					a(href='#' data-toggle='dropdown') About
-						span.caret
-					ul.dropdown-menu(role='menu')
-						li
-							a(href='#') Our Mission
-						li
-							a(href='#') Initiatives
-						li
-							a(href='#') Contact
-						li
-							a(href='#') Careers
-				li.dropdown
-					a(href='#/tools' data-toggle='dropdown') Interactive Tools
-						span.caret
-					ul.dropdown-menu(role='menu')
-						li
-							a(href='#/serviceSummary') Service Profiles
-						li
-							a(href='#/regionSummary') Regional Profiles
-						li
-							a(href='#/providerSummary') Provider Profiles
-						li
-							a(href='#') Payer Profiles
-						li
-							a(href='#') Disease Profiles
-						li
-							a(href='#/subject') Performance Measures
-						li
-							a(href='#/maps') Maps
+					li.dropdown
+						a(href='#' data-toggle='dropdown') About
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#') Our Mission
+							li
+								a(href='#') Initiatives
+							li
+								a(href='#') Contact
+							li
+								a(href='#') Careers
+					li.dropdown
+						a(href='#/tools' data-toggle='dropdown') Interactive Tools
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#/serviceSummary') Service Profiles
+							li
+								a(href='#/regionSummary') Regional Profiles
+							li
+								a(href='#/providerSummary') Provider Profiles
+							li
+								a(href='#') Payer Profiles
+							li
+								a(href='#') Disease Profiles
+							li
+								a(href='#/subject') Performance Measures
+							li
+								a(href='#/maps') Maps
