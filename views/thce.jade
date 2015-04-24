@@ -1,0 +1,19 @@
+script(type="text/ng-template" id="thce.html")
+	include _subjectHeader.jade
+	.row
+		.col-md-7#thceTreemap
+		.col-md-1
+		.col-md-4
+			#thceInfo
+				h3 {{thce.name}}
+				h4 {{thce.parentName}}
+				table.table
+					tr
+						th Expense CY12 
+						th ${{thce.exp12}}
+					tr 
+						th Expense CY13
+						th ${{thce.exp13}}
+					tr 
+						th Percent Change
+						th {{thce.percChange}}%

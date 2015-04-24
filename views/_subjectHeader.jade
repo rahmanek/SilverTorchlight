@@ -1,0 +1,33 @@
+.row
+	.col-md-1
+	.col-md-10
+		ol.breadcrumb
+			li
+				a(href="#") Home
+			li
+				a(href="#/tools") Tools
+			li.active Subject Profiles
+	.col-md-1
+
+.row 
+	.col-md-6
+			h2 Subject profiles
+	.col-md-6
+		.subjectSearch
+			.col-md-6
+				select.form-control#subjectSearchBox(name="select")
+					option(value="") Select Subject
+					option(value="subjectSummary") Subject Summary
+					option(value="rp") Relative Price
+					option(value="thce") Total Health Care Expenditures
+					option(value="") Alternative Payment Methodologies
+					option(value="") Total Medical Expense
+					option(value="") Access
+					option(value="") Opiate Addiction
+					option(value="") Emergency Room Utilization
+					option(value="") Standard Quality Measure Sets
+					option(value="") Provider Financial Performance
+					option(value="") Patient Safety and Medical Error Reduction
+					option(value="") Post-Acute Care
+			.col-md-6
+				button.btn.btn-default#subjectSearchButton(type='submit') Search

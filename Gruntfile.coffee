@@ -10,6 +10,14 @@ module.exports = (grunt) ->
 					"coffee/**/*.coffee"
 				]
 				dest: "tmp/torchlight.coffee"
+			data:
+				src: [
+					"public/js/torchlight.js"
+					"data/hospitals.js"
+					"config.js"
+				]
+				dest: "public/js/torchlight.js"
+
 
 		coffee:
 			compile:
@@ -58,4 +66,4 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-concat"
 	grunt.loadNpmTasks "grunt-contrib-copy"
 	grunt.loadNpmTasks "grunt-sass"
-	grunt.registerTask "default", ["copy","concat","coffee","jade","sass","watch"]
+	grunt.registerTask "default", ["copy","concat:dist","coffee","concat:data","jade","sass","watch"]

@@ -4,9 +4,6 @@ Angular = angular.module 'torchlight', ['ngRoute']
 Angular.config ['$routeProvider',($routeProvider) ->
 
 	$routeProvider
-		.when '/payer',
-			templateUrl: 'payer.html'
-			controller: 'payer'
 
 		.when '/service',
 			templateUrl: 'service.html'
@@ -35,9 +32,6 @@ Angular.config ['$routeProvider',($routeProvider) ->
 		.when '/maps',
 			templateUrl: 'maps.html'
 
-		.when '/subject',
-			templateUrl: 'subject.html'
-
 		.when '/tools',
 			templateUrl: 'tools.html'
 			controller: 'tools'
@@ -45,7 +39,19 @@ Angular.config ['$routeProvider',($routeProvider) ->
 		.when '/home',
 			templateUrl: 'home.html'
 			controller: 'home'
+
+		.when '/subjectSummary',
+			templateUrl: 'subjectSummary.html'
+			controller: 'subjectSummary'
 			
+		.when '/rp',
+			templateUrl: 'rp.html'
+			controller: 'rp'
+			
+		.when '/thce',
+			templateUrl: 'thce.html'
+			controller: 'thce'
+
 		.when '/',
 			templateUrl: 'home.html'
 			controller: 'home'

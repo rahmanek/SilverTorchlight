@@ -1,0 +1,23 @@
+script(type="text/ng-template" id="rp.html")
+	include _subjectHeader.jade
+	
+	.row
+		.col-md-8#map
+			div(style="height:450px")
+		.col-md-4#infoBody(style="visibility:hidden;")
+			h4 {{hName}}
+			h5 {{hStreet}}, {{hCity}}, MA {{hZip}}
+			table.table
+				tr
+					th Revenue 
+					th ${{hRevenue}} Million
+				tr 
+					th Expense:
+					th ${{hExpense}} Million
+				tr
+					th Staffed Beds:
+					th {{hStaffedBeds}}
+				tr 
+					th Relative Price:
+					th {{hRp}}
+			p(ng-bind-html="profileLink")
