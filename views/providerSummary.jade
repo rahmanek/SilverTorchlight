@@ -8,17 +8,30 @@ script(type="text/ng-template" id="providerSummary.html")
 			table.table
 				thead
 					tr
-						th Org ID
-						th Name
-						th System
-						th Revenue
-						th Margin
-						th Price Level
+						th.providerSummary#orgIdNum
+							a(href="javascript:;") Org ID
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
+						th.providerSummary#hospitalName
+							a(href="javascript:;") Name
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
+						th.providerSummary#system
+							a(href="javascript:;") System
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
+						th.providerSummary#revenueNum
+							a(href="javascript:;") Revenue
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
+						th.providerSummary#margin
+							a(href="javascript:;") Margin
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
+						th.providerSummary#priceLevelNum
+							a(href="javascript:;") Price Level
+								span.glyphicon.glyphicon-menu-up(style="font-size: 8px; margin-left:5px;")
 				tbody 
 					tr(ng-repeat="provider in providerSummary.providers")
 						th {{provider.orgId}}
-						th {{provider.hospitalName}}
+						th 
+							a(href="{{provider.providerProfile}}"){{provider.hospitalName}}
 						th {{provider.system}}
 						th ${{provider.revenue}}
 						th {{provider.margin}}%
-						th {{provider.rpStr}}
+						th {{provider.priceLevel}}
